@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basics", "Basics\Basics.csproj", "{3E2016DD-F281-47B7-B052-ECA0FDD95051}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Basics", "Basics\Basics.csproj", "{3E2016DD-F281-47B7-B052-ECA0FDD95051}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityExample", "IdentityExample\IdentityExample.csproj", "{CEE7CCEC-2643-4D4B-80DC-F20B73770845}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityExample", "IdentityExample\IdentityExample.csproj", "{CEE7CCEC-2643-4D4B-80DC-F20B73770845}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basic", "Basic", "{967E4A97-6ACA-46B6-AB8D-76285A87C3BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OAuth", "OAuth", "{590F2B97-88A4-421B-AC3C-603D454B5A41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{E84CFA48-6116-4498-8ADC-AA3C5C6D0A54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +27,18 @@ Global
 		{CEE7CCEC-2643-4D4B-80DC-F20B73770845}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEE7CCEC-2643-4D4B-80DC-F20B73770845}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CEE7CCEC-2643-4D4B-80DC-F20B73770845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E84CFA48-6116-4498-8ADC-AA3C5C6D0A54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E84CFA48-6116-4498-8ADC-AA3C5C6D0A54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E84CFA48-6116-4498-8ADC-AA3C5C6D0A54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E84CFA48-6116-4498-8ADC-AA3C5C6D0A54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3E2016DD-F281-47B7-B052-ECA0FDD95051} = {967E4A97-6ACA-46B6-AB8D-76285A87C3BE}
+		{CEE7CCEC-2643-4D4B-80DC-F20B73770845} = {967E4A97-6ACA-46B6-AB8D-76285A87C3BE}
+		{E84CFA48-6116-4498-8ADC-AA3C5C6D0A54} = {590F2B97-88A4-421B-AC3C-603D454B5A41}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E26BEAD5-9CF7-40EB-9B79-2776887F6299}
