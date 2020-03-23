@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ApiOne
 {
@@ -22,7 +23,19 @@ namespace ApiOne
                     config.Authority = "http://localhost:7000";
                     config.Audience = "ApiOne";
                     config.RequireHttpsMetadata = false;
+                    //config.TokenValidationParameters = new TokenValidationParameters()
+                    //{
+                    //    default value is 5 min, the token expired data is token exp + ClockSkew  
+                    //    ClockSkew = TimeSpan.Zero
+                    //};
                 });
+
+            services.AddCors(config => {
+                config.AddPolicy("AllowAll", p =>
+                        p.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
 
             services.AddControllers();
         }
@@ -36,6 +49,8 @@ namespace ApiOne
             }
 
             app.UseRouting();
+
+            app.UseCors("AllowAll");
 
             app.UseAuthentication();
 

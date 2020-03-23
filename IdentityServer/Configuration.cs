@@ -14,12 +14,17 @@ namespace IdentityServer
             new List<IdentityResource>
             {
                 new IdentityResources.OpenId(),
-                new IdentityResources.Profile()
+                new IdentityResources.Profile(),
+                new IdentityResource
+                {
+                   Name = "rc.scope",
+                   UserClaims = { "rc.garndma" }
+                }
             };
         public static IEnumerable<ApiResource> GetApis() =>
             new List<ApiResource> {
                 new ApiResource("ApiOne"),
-                new ApiResource("ApiTwo")
+                new ApiResource("ApiTwo", new string[] {"rc.api.garndma" })
             };
 
         public static IEnumerable<Client> GetClients() =>
@@ -33,20 +38,43 @@ namespace IdentityServer
                      AllowedGrantTypes = GrantTypes.ClientCredentials,
                      AllowedScopes = { "ApiOne" }
                 },
-                 new Client
+                new Client
                 {
                      ClientId = "client_id_mvc",
                      ClientSecrets = { new Secret("client_secret_mvc".ToSha256())},
                      AllowedGrantTypes = GrantTypes.Code,
-                     AllowedScopes = 
-                     { 
+                     AllowedScopes =
+                     {
                          "ApiOne",
                          "ApiTwo",
                          IdentityServerConstants.StandardScopes.OpenId,
-                         IdentityServerConstants.StandardScopes.Profile
+                         // IdentityServerConstants.StandardScopes.Profile,
+                         "rc.scope"
                      },
+                     AllowOfflineAccess =true,
+                     // puts all the claims in the id token
+                     // AlwaysIncludeUserClaimsInIdToken = true,
                      RedirectUris = { "http://localhost:6003/signin-oidc" },
+                     PostLogoutRedirectUris = { "http://localhost:6003/Home/Index" },
                      RequireConsent = false
+                },
+                new Client
+                {
+                    ClientId = "client_id_js",
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowedScopes =
+                     {
+                         "ApiOne",
+                         "ApiTwo",
+                         IdentityServerConstants.StandardScopes.OpenId,
+                         "rc.scope"
+                     },
+                    AccessTokenLifetime = 1,
+                    AllowAccessTokensViaBrowser = true,
+                    RedirectUris = { "http://localhost:6004/home/signin" },
+                    PostLogoutRedirectUris = { "http://localhost:6004/home/index" },
+                    RequireConsent = false,
+                    AllowedCorsOrigins = { "http://localhost:6004" }
                 }
             };
     }
