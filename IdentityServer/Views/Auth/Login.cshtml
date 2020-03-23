@@ -1,4 +1,13 @@
 ﻿@model LoginViewModel
+<form asp-controller="Auth" asp-action="ExternalLogin" 
+      asp-route-returnUrl="@Model.ReturnUrl" method="post">
+    @foreach (var provider in Model.ExternalProviders)
+    { 
+        <button name="provider" value="@provider.Name" type="submit">
+            @provider.Name
+        </button>
+    }
+</form>
     <form asp-controller="auth" asp-action="login" method="post">
         <input type="hidden" asp-for="ReturnUrl"/>
         <div>
